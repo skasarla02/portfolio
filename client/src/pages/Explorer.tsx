@@ -8,7 +8,7 @@ import {
   Camera, X, ArrowLeft, Rocket, Lock, CreditCard,
   AlertTriangle, Gauge, Users, Fingerprint, BookOpen,
   FileText, Play, Check, ArrowRight, Clock, Sparkles,
-  MessageSquare, Copy, User, BarChart3, ChevronUp, Radio
+  MessageSquare, Copy, User, BarChart3, ChevronUp, Radio, Github
 } from "lucide-react";
 import { WORLD_MAP_PATHS, WORLD_MAP_VIEWBOX } from "@/data/world-map-paths";
 import BeaconDossier from "@/components/BeaconDossier";
@@ -423,9 +423,15 @@ export default function Explorer() {
                           </div>
                         </div>
                       </div>
-                      <span className="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/20 bg-cyan-500/10">
-                        CASE STUDY
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30 bg-emerald-500/10">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot" />
+                          LIVE
+                        </span>
+                        <span className="text-[10px] font-mono text-cyan-400 px-2 py-0.5 rounded-full border border-cyan-500/20 bg-cyan-500/10">
+                          CASE STUDY
+                        </span>
+                      </div>
                     </div>
 
                     <p className="text-sm text-foreground/80 leading-relaxed mb-5 max-w-2xl">
@@ -447,15 +453,28 @@ export default function Explorer() {
                       ))}
                     </div>
 
-                    <button
-                      data-testid="btn-open-squadvault"
-                      onClick={() => setShowSquadVault(true)}
-                      className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-mono transition-all duration-300 glow-teal hover-elevate active-elevate-2"
-                    >
-                      <BookOpen className="w-4 h-4" />
-                      Open Full Dossier
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button
+                        data-testid="btn-open-squadvault"
+                        onClick={() => setShowSquadVault(true)}
+                        className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-mono transition-all duration-300 glow-teal hover-elevate active-elevate-2"
+                      >
+                        <BookOpen className="w-4 h-4" />
+                        Open Full Dossier
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </button>
+                      <a
+                        href="https://squadvault-op10.onrender.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-testid="btn-launch-squadvault"
+                        className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-emerald-500 border border-emerald-400 text-emerald-950 text-sm font-mono font-bold transition-transform duration-200 hover:scale-[1.03]"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Launch Live App
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
 
@@ -1245,8 +1264,46 @@ function SquadVaultDossier({ onClose }: { onClose: () => void }) {
 
         <div className="mt-auto pt-4 border-t border-white/5">
           <div className="px-3 mb-3">
-            <p className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider mb-1">Project Status</p>
-            <p className="text-xs font-mono text-cyan-400">Strategy Deployed</p>
+            <p className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider mb-1.5">Project Status</p>
+            <div className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_currentColor] text-emerald-400" />
+              <p className="text-xs font-mono text-emerald-400">Built & Deployed Live</p>
+            </div>
+          </div>
+          <div className="px-1.5 mb-3 space-y-1">
+            <a
+              href="https://squadvault-op10.onrender.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="sv-link-demo"
+              className="flex items-center gap-2 px-2 py-2 rounded-md text-xs font-mono text-emerald-400 transition-colors hover-elevate w-full border border-emerald-500/20 bg-emerald-500/5"
+            >
+              <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
+              Live Demo
+              <ArrowUpRight className="w-3 h-3 ml-auto opacity-60" />
+            </a>
+            <a
+              href="https://squadvault-op10.onrender.com/simulator"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="sv-link-simulator"
+              className="flex items-center gap-2 px-2 py-2 rounded-md text-xs font-mono text-cyan-400 transition-colors hover-elevate w-full"
+            >
+              <Sparkles className="w-3.5 h-3.5 flex-shrink-0" />
+              Logic Simulator
+              <ArrowUpRight className="w-3 h-3 ml-auto opacity-60" />
+            </a>
+            <a
+              href="https://github.com/skasarla02/squadvault"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="sv-link-github"
+              className="flex items-center gap-2 px-2 py-2 rounded-md text-xs font-mono text-muted-foreground transition-colors hover-elevate w-full"
+            >
+              <Github className="w-3.5 h-3.5 flex-shrink-0" />
+              Source Code
+              <ArrowUpRight className="w-3 h-3 ml-auto opacity-60" />
+            </a>
           </div>
           <button
             data-testid="sv-close-sidebar"
@@ -1317,6 +1374,48 @@ function SquadVaultDossier({ onClose }: { onClose: () => void }) {
                   <p className="text-sm text-muted-foreground font-mono">
                     Lead Product Manager // Escrow-as-a-Service Platform
                   </p>
+
+                  <div className="mt-5 card-tactical rounded-md p-4 border border-emerald-500/20 bg-gradient-to-br from-emerald-500/[0.07] to-transparent">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-dot" />
+                      <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-[0.2em]">Not just a spec — it's built and live</span>
+                    </div>
+                    <p className="text-sm text-foreground/80 leading-relaxed mb-3">
+                      I took this PRD and shipped it: a full-stack app with a real escrow state machine, live Stripe test-mode payments (PaymentIntents + Issuing virtual cards), and every edge case below implemented as real code.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <a
+                        href="https://squadvault-op10.onrender.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-testid="sv-hero-demo"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono font-bold bg-emerald-500 text-emerald-950 transition-transform hover:scale-[1.03]"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        Launch Live App
+                      </a>
+                      <a
+                        href="https://squadvault-op10.onrender.com/simulator"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-testid="sv-hero-simulator"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono border border-cyan-500/40 text-cyan-400 transition-colors hover-elevate"
+                      >
+                        <Sparkles className="w-3.5 h-3.5" />
+                        Try the Logic Simulator
+                      </a>
+                      <a
+                        href="https://github.com/skasarla02/squadvault"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-testid="sv-hero-github"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono border border-white/10 text-muted-foreground transition-colors hover-elevate"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        Source
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="grid md:grid-cols-[1fr_200px] gap-6">
